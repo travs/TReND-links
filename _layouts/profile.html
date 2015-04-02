@@ -2,7 +2,16 @@
 layout: default
 ---
 
-<div class="profile">
-  <p class="name">{{ page.name }}</p>
-  <a class="email" href="mailto:{{ page.email }}">{{ page.email }}</a>
+<div class="profile container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-2 ">
+      <img class="img-responsive img-rounded vcenter" src="https://s.gravatar.com/avatar/c9a16caf6cde2ed73c383c6be548e96f?s=600">
+    </div>
+    <div class="col-sm-4">
+      <h2 class="name">{{ page.name }}</h2>
+      <h4 class="country">{{ page.country }}</h4>
+      <p class="university">{{ page.university }}</p>
+      <a class="email" href="mailto:{{ page.email }}">{{ page.email }}</a>
+    </div>
+  </div>
 </div>
