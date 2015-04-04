@@ -19,7 +19,7 @@
 	<tbody class="list">
 	{% for post in site.posts %}
 		<tr>
-			<td class="name"><a href={{ post.url }}>{{ post.name }}</a></td>
+			<td class="name"><a href="http://travs.github.io/TReND-links/{{ post.url }}">{{ post.name }}</a></td>
 			<td class="university">{{ post.university }}</td>
 			<td class="country">{{ post.country }}</td>
 			<td class="fields">{{ post.fields | array_to_sentence_string | capitalize }}</td>
