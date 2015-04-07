@@ -6,7 +6,11 @@ layout: default
   <div class="row">
     {% include header.html %}
     <div class="col-sm-4 col-sm-offset-2 ">
+      {% if page.image == null %}
+      <img class="img-responsive img-rounded vcenter" src="https://raw.githubusercontent.com/travs/TReND-links/gh-pages/assets/user.png">
+      {% else %}
       <img class="img-responsive img-rounded vcenter" src="{{ page.image }}">
+      {% endif %}
     </div>
     <div class="col-sm-4">
       <h2 class="name">{{ page.name }}</h2>
