@@ -2,3 +2,5 @@ name: ""
 description: ""
 
 url: "http://travs.github.io/TReND-links"
+
+permalink: /:title/
