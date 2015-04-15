@@ -1,0 +1,16 @@
+---
+layout: profile
+name: John Doe
+email: example@gmail.com
+image: 
+degree: PhD / MD
+country: United States
+university: Springfield University
+model-system: Microorganisms
+research-technique: Anatomy
+
+fields: 
+- Systems Neuroscience
+- Cellular Neuroscience
+- Psychiatry
+---
