@@ -18,14 +18,16 @@
 	</thead>
 	<tbody class="list">
 	{% for post in site.posts %}
-		<tr>
-			<td class="name"><a href="http://travs.github.io/TReND-links{{ post.url }}">{{ post.name }}</a></td>
-			<td class="university">{{ post.university }}</td>
-			<td class="country">{{ post.country }}</td>
-			<td class="fields">{{ post.fields | array_to_sentence_string | capitalize }}</td>
-			<td class="model-system">{{ post.model-system | capitalize }}</td>
-			<td class="research-technique">{{ post.research-technique | capitalize }}</td>
-		</tr>
+		{% if post.layout == 'profile' %}
+			<tr>
+				<td class="name"><a href="http://travs.github.io/TReND-links{{ post.url }}">{{ post.name }}</a></td>
+				<td class="university">{{ post.university }}</td>
+				<td class="country">{{ post.country }}</td>
+				<td class="fields">{{ post.fields | array_to_sentence_string | capitalize }}</td>
+				<td class="model-system">{{ post.model-system | capitalize }}</td>
+				<td class="research-technique">{{ post.research-technique | capitalize }}</td>
+			</tr>
+			{% endif %}
 	{% endfor %}
 	</tbody>
 </table>
