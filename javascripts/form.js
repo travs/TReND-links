@@ -16,9 +16,21 @@ field.asString = function(){
   return this.contents.join(', ');
 }
 
-//creating the treeview
+//enumerate allowed fields here
+var allowedFields = ['Biology and life sciences', 'Ecology and environmental sciences', 'Medicine and health sciences'];
 
+//creating the treeview
 $.getJSON('https://cdn.rawgit.com/travs/PLOS-Subject-Area-Explorer/master/plosthes.2014-5.json', function(data){
+  for (var i = data.length - 1; i >= 0; i--){
+    //start at array end to deal with array resizing
+    var subtree = data[i];
+    var pos = allowedFields.indexOf(subtree.text[0]);
+    if(pos === -1){
+      //field not allowed
+      data.splice(pos, 1);
+    }
+  }
+  console.log(data);
   $('#fields').after('<div id="tree"></div>');
   $('.fieldsInput').attr('readonly', '');
   $('#tree').treeview({data: data, levels: 1, nodeIcon: 'glyphicon', multiSelect: true, highlightSelected: true});
