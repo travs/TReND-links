@@ -21,6 +21,7 @@ var allowedFields = ['Biology and life sciences', 'Ecology and environmental sci
 
 //creating the treeview
 $.getJSON('https://cdn.rawgit.com/travs/PLOS-Subject-Area-Explorer/master/plosthes.2014-5.json', function(data){
+  //remove broad scientific fields we're not allowing
   for (var i = data.length - 1; i >= 0; i--){
     //start at array end to deal with array resizing
     var subtree = data[i];
@@ -30,7 +31,35 @@ $.getJSON('https://cdn.rawgit.com/travs/PLOS-Subject-Area-Explorer/master/plosth
       data.splice(pos, 1);
     }
   }
-  console.log(data);
+
+  //only go a few levels (maxDepth) deep in the tree
+  var maxDepth = 3;
+  function traverse(tree, depth){
+    //recursively traverse tree
+    depth++;
+    if(depth < maxDepth){
+      for(var i = 0; i < tree.length; i++){
+        if(tree[i].nodes){
+          traverse(tree[i].nodes, depth);
+        }
+        //make level 1 items unselectable
+        if(depth === 1){
+          tree[i].selectable = false;
+        }
+      }
+    }
+    else{
+      //we're at the maxDepth, so remove any nodes deeper than this
+      for(var i = 0; i < tree.length; i++){
+        if(tree[i].nodes){
+          delete tree[i].nodes;
+        }
+      }
+    }
+  }
+
+  traverse(data, 0);
+
   $('#fields').after('<div id="tree"></div>');
   $('.fieldsInput').attr('readonly', '');
   $('#tree').treeview({data: data, levels: 1, nodeIcon: 'glyphicon', multiSelect: true, highlightSelected: true});
