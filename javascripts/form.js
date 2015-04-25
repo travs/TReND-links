@@ -96,4 +96,6 @@ $('.ss-password-warning').remove();
 
 $('.ss-q-short, .ss-q-long').addClass('pull-right');
 
+$('#about').removeClass('pull-right'); //keep about textfield on left
+
 $('select').addClass('pull-right');
