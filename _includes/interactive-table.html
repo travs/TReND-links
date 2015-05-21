@@ -24,8 +24,8 @@
 				<td class="university">{{ post.university }}</td>
 				<td class="country">{{ post.country }}</td>
 				<td class="fields">{{ post.fields | array_to_sentence_string | capitalize }}</td>
-				<td class="model-system">{{ post.model-system | capitalize }}</td>
-				<td class="research-technique">{{ post.research-technique | capitalize }}</td>
+				<td class="model-system">{{ post.model-system | array_to_sentence_string | capitalize }}</td>
+				<td class="research-technique">{{ post.research-technique | array_to_sentence_string | capitalize }}</td>
 			</tr>
 			{% endif %}
 	{% endfor %}
