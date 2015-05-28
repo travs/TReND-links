@@ -1,26 +1,25 @@
-
 ---
 layout: profile
 university: University of Ibadan
-website: 
+website:
 
-model-system: 
+model-system:
 - Bacteria
 - Cell culture
 
 birth-year: 1988
-about: Just in my very early academic and research career, i had my bachelor in agronomy with specific research area in insect toxicology, then my masters in plant pathology, for my phd now, i am specifically interrsted in molecular plant pathology, genetics,and bioinformatics 
-image: 
+about: Just in my very early academic and research career, i had my bachelor in agronomy with specific research area in insect toxicology, then my masters in plant pathology, for my phd now, i am specifically interrsted in molecular plant pathology, genetics,and bioinformatics
+image:
 country: Nigeria
 city: Osogbo
-languages: 
+languages:
 degree: MSc
 email: kafilat_adedeji@yahoo.com
 gender: Female
-research-technique: 
+research-technique:
 active-since: 2013
 
-fields: 
+fields:
 - Agriculture
 - Microbiology
 - Molecular biology

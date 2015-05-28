@@ -1,36 +1,35 @@
-
 ---
 layout: profile
 
-university: 
+university:
 - university of ibadan
 - nigeria
 
-website: 
+website:
 
-model-system: 
+model-system:
 - Rodents
 - Rats
 - Mice
 
 birth-year: 1990
 about: I hold a bachelor and masters degree in physiology.
-I research into treatment of depression with natural plants, and understanding the mechanism of certain plants with antidepressants potentials. 
-image: 
+I research into treatment of depression with natural plants, and understanding the mechanism of certain plants with antidepressants potentials.
+image:
 country: Nigeria
 city: Ibadan
-languages: 
+languages:
 degree: MSc
 email: shaeunfabros@ymail.com
 gender: Male
 
-research-technique: 
+research-technique:
 - Pharmacology
 - Behaviour
 
 active-since: 2010
 
-fields: 
+fields:
 - Neuroscience
 - Physiology
 - Behavior

@@ -1,24 +1,23 @@
-
 ---
 layout: profile
 
-university: 
+university:
 - University of Maroua
 - University of Ngaoundere
 
-website: 
+website:
 
-model-system: 
+model-system:
 - Mosquitoes
 - Bacteria
 - Mice
 
 birth-year: 1960
 about: Helping Traditionnal Healers from Cameroom improving their medicine (from medicinal Plants) that show efficacy in the treatment of some brain disorders in traditional medicine
-image: 
+image:
 country: Cameroon
 
-city: 
+city:
 - Maroua
 - Ngaoundere
 
@@ -27,14 +26,14 @@ degree: PhD
 email: eli_bum@yahoo.fr
 gender: Female
 
-research-technique: 
+research-technique:
 - Pharmacology
 - Behaviour
 - Electrophysiology
 
 active-since: 1987
 
-fields: 
+fields:
 - Behavior
 - Physiology
 - Neuroscience
