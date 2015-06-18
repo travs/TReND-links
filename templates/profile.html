@@ -1,0 +1,69 @@
+
+<link rel="stylesheet" href="/css/custom.css">
+
+<div class="profile container">
+  <div class="row">
+    {% include header.html %}
+    <div class="col-sm-3 col-sm-offset-2 ">
+      {% if page.image == null %}
+      <img class="img-responsive img-rounded vcenter" src="https://raw.githubusercontent.com/travs/TReND-links/gh-pages/assets/user.png">
+      {% else %}
+      <img class="img-responsive img-rounded vcenter" src="{{ page.image }}">
+      {% endif %}
+    </div>
+    <div class="col-sm-5" role="tabpanel">
+      <!--- List of tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#research" aria-controls="research" role="tab" data-toggle="tab">Research</a></li>
+        <li role="presentation"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">Contact</a></li>
+      </ul>
+
+      <!-- Tab contents -->
+      <div class="tab-content">
+        <div class="default-tab-content">
+          <!-- Put content that should show on every tab here -->
+          <h2 class="name personal"><a href={{ page.website }}>{{ page.name }}</a>{% if page.degree %}, {{ page.degree }}{% endif %}</h2>
+        </div>
+        <div role="tabpanel" class="tab-pane active in fade" id="research">
+          <h4 class="university scientific">{{ page.university }}</h4>
+          <table class="table table-bordered">
+            <tr class="fields">
+              <td class="table-label">
+                Fields
+              </td>
+              <td class="table-data scientific">
+                {% if page.fields[1] %}{{ page.fields | array_to_sentence_string | capitalize }}{% else %}{{ page.fields }}{% endif %}
+              </td>
+            </tr>
+
+            <tr class="model-system">
+              <td class="table-label">
+                Model system
+              </td>
+              <td class="table-data scientific">
+                {% if page.model-system[1] %}{{ page.model-system | array_to_sentence_string | capitalize }}{% else %}{{ page.model-system }}{% endif %}
+              </td>
+            </tr>
+
+            <tr class="research-technique">
+              <td class="table-label">
+                Research technique
+              </td>
+              <td class="table-data scientific">
+                {% if page.research-technique[1] %}{{ page.research-technique | array_to_sentence_string | capitalize }}{% else %}{{ page.research-technique }}{% endif %}
+              </td>
+            </tr>
+          </table>
+
+          <p class="about scientific">{{ page.about }}</p>
+
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="contact">
+          <h4 class="country personal">{% if page.city %}{{ page.city }}, {% endif %}{{ page.country }}</h4>
+          <p class="personal"><a class="website" href={{ page.website }}>Website</a></p>
+          <p class="personal"><a class="email" href="mailto:{{ page.email }}">{{ page.email }}</a></p>
+          {% if page.languages %}<p class="languages">Non-English languages: {{ page.languages }}</p>{% endif %}
+        </div>
+    </div>
+  </div>
+</div>

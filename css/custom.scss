@@ -1,0 +1,52 @@
+---
+---
+
+/***************************
+*      COLOR PALETTE
+***************************/
+
+$brown: #CC6600;
+$beige: #FFFBD0;
+$orange: #FF9900;
+$red: #C13100;
+
+/***************************
+*         GLOBAL
+***************************/
+
+html, body {
+  overflow-x: hidden;
+}
+
+hr {
+  color: #000000;
+  width: 200%;
+  margin-left: -50%;
+  height: 8px;
+  background-color: #000000;
+}
+
+/***************************
+*          PAGES
+***************************/
+
+p.fields {
+  font-style: italic;
+}
+
+.about-text {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.scientific {
+  margin: 1em 0;
+}
+
+.personal {
+  margin: 1em 0;
+}
+
+.table {
+  margin: 2em 0;
+}
