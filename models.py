@@ -36,7 +36,20 @@ class UserProfile(Model):
     class Meta:
         database = DATABASE
 
+    @classmethod
+    def create_user_profile(cls, user, name, age, country):
+        try:
+            cls.create(
+                user=user,
+                name=name,
+                age=age,
+                country=country
+            )
+        except IntegrityError:
+            raise ValueError("Profile already exists for this user")
+
 def initialize():
     DATABASE.connect()
     DATABASE.create_tables([User], safe=True)
     DATABASE.close()
+
