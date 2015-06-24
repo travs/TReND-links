@@ -41,7 +41,6 @@ def register():
   if form.validate_on_submit():
     flash('Yay! You registered.', 'success')
     models.User.create_user(
-        username=form.username.data,
         email=form.email.data,
         password=form.password.data
     )
@@ -65,6 +64,10 @@ def login():
         flash("Your email or password doesn't match.", 'error')
   return render_template('login.html', form=form)
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 @app.route('/logout')
 @login_required
 def logout():
@@ -74,13 +77,12 @@ def logout():
 
 @app.route('/')
 def index():
-  return redirect(url_for('index'))
+  return render_template('index.html')
 
 if __name__ == '__main__':
   try:
     models.initialize()
     models.User.create_user(
-        username='travisjacobs',
         email='trav221@gmail.com',
         password='password',
         admin=True

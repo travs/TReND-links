@@ -22,9 +22,9 @@
 				<td class="name"><a href="http://travs.github.io/TReND-links{{ post.url }}">{{ post.name }}</a></td>
 				<td class="university">{{ post.university }}</td>
 				<td class="country">{{ post.country }}</td>
-				<td class="fields">{% if post.fields[1] %}{{ post.fields | array_to_sentence_string | capitalize }}{% else %}{{ post.fields }}{% endif %}</td>
-				<td class="model-system">{% if post.model-system[1] %}{{ post.model-system | array_to_sentence_string | capitalize }}{% else %}{{ post.model-system }}{% endif %}</td>
-				<td class="research-technique">{% if post.research-technique[1] %}{{ post.research-technique | array_to_sentence_string | capitalize }}{% else %}{{ post.research-technique }}{% endif %}</td>
+				<td class="fields">{% if post.fields[1] %}{{ post.fields | capitalize }}{% else %}{{ post.fields }}{% endif %}</td>
+				<td class="model-system">{% if post.model-system[1] %}{{ post.model-system | capitalize }}{% else %}{{ post.model-system }}{% endif %}</td>
+				<td class="research-technique">{% if post.research-technique[1] %}{{ post.research-technique | capitalize }}{% else %}{{ post.research-technique }}{% endif %}</td>
 			</tr>
 			{% endif %}
 	{% endfor %}
