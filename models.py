@@ -27,6 +27,15 @@ class User(UserMixin, Model):
         except IntegrityError:
             raise ValueError("User already exists")
 
+class UserProfile(Model):
+    user = ForeignKeyField(User, related_name="profile")
+    name = CharField(max_length=50)
+    age = DateField()
+    country = CharField(max_length=100)
+
+    class Meta:
+        database = DATABASE
+
 def initialize():
     DATABASE.connect()
     DATABASE.create_tables([User], safe=True)
