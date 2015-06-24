@@ -64,6 +64,10 @@ def login():
         flash("Your email or password doesn't match.", 'error')
   return render_template('login.html', form=form)
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 @app.route('/logout')
 @login_required
 def logout():
