@@ -1,5 +1,4 @@
----
----
+
 
 /***************************
 *      COLOR PALETTE
@@ -49,4 +48,10 @@ p.fields {
 
 .table {
   margin: 2em 0;
+}
+
+
+
+.lead {
+  color: tomato;
 }
