@@ -2,6 +2,8 @@
 venv/
 # ignore cache of locally-deployed app
 __pycache__/
+# ignore .pyc files
+*.pyc
 # ignore thumbnail caching
 Thumbs.db
 */Thumbs.db
