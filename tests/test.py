@@ -1,22 +1,17 @@
 import sys, os
 sys.path.insert(0, '..')
-import unittest, tempfile, trendlinks, models
+import tempfile, trendlinks, models
 
-class TrendlinksTestCase(unittest.TestCase):
+def setUp():
+    skip, db_location = tempfile.mkstemp()
+    db = models.get_db(db_location)
+    models.DATABASE = db
+    app = trendlinks.app.test_client()
+    models.initialize()
 
-    def setUp(self):
-        skip, db_location = tempfile.mkstemp()
-        self.db = models.get_db(db_location)
-        models.DATABASE = self.db
-        self.app = trendlinks.app.test_client()
-        models.initialize()
+def tearDown():
+    db.close()
 
-    def tearDown(self):
-        self.db.close()
+def check_status_OK(self, url):
+    app.get(url)
 
-    def test_empty_db(self):
-        rv = self.app.get('/')
-        assert 'No entries here so far' in rv.data
-
-if __name__ == '__main__':
-    unittest.main()

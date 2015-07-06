@@ -4,10 +4,7 @@ from flask.ext.bcrypt import generate_password_hash
 from flask.ext.login import UserMixin
 from peewee import *
 
-def get_db(db_name):
-    return SqliteDatabase(db_name)
-
-DATABASE = get_db('trendlinks.db')
+DATABASE = SqliteDatabase('trendlinks.db')
 
 class User(UserMixin, Model):
     email = CharField(unique=True)
