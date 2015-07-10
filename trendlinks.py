@@ -9,6 +9,7 @@ import models
 DEBUG = True
 PORT = 8000
 HOST = '0.0.0.0'
+DATABASE = models.DATABASE
 
 app = Flask(__name__)
 app.secret_key = 'sdhfjkbgddf74u4g8gsnrb73wiur3b2jn3UB!U'
