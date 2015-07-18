@@ -2,6 +2,7 @@ import sys, os
 sys.path.insert(0, '..')
 import tempfile, trendlinks, models, html
 import logging as log
+
 from helpers import *
 from nose import *
 from nose.tools import nottest
@@ -10,13 +11,15 @@ class TestTrendlinks(object):
 
     @classmethod
     def setUpClass(self):
+        self.db, trendlinks.app.config['DATABASE'] = tempfile.mkstemp()
         trendlinks.app.config['TESTING'] = True
         trendlinks.app.config['WTF_CSRF_ENABLED'] = False
         self.app = trendlinks.app.test_client()
 
     @classmethod
     def tearDownClass(self):
-        pass
+        os.close(self.db)
+        os.unlink(trendlinks.app.config['DATABASE'])
 
     def check_status_OK(self, url):
         """ Check that the URL returns a '200 OK' status """

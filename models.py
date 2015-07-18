@@ -1,10 +1,12 @@
 import datetime
+from trendlinks import app
 
 from flask.ext.bcrypt import generate_password_hash
 from flask.ext.login import UserMixin
 from peewee import *
 
-DATABASE = SqliteDatabase('trendlinks.db')
+DB_NAME = trendlinks.app.config['DATABASE']
+DATABASE = SqliteDatabase(DB_NAME)
 
 class User(UserMixin, Model):
     email = CharField(unique=True)
