@@ -3,16 +3,26 @@ from flask.ext.bcrypt import check_password_hash
 from flask.ext.login import (LoginManager, login_user, logout_user,
                             login_required)
 
-import forms
-import models
+import forms, models, os
+
+app = Flask(__name__)
 
 DEBUG = True
 PORT = 8000
 HOST = '0.0.0.0'
 DATABASE = models.DATABASE
+SECRET_KEY = 'sdhfjkbgddf74u4g8gsnrb73wiur3b2jn3UB!U'
+SERVER_NAME = 'localhost:{}'.format(PORT)
 
-app = Flask(__name__)
-app.secret_key = 'sdhfjkbgddf74u4g8gsnrb73wiur3b2jn3UB!U'
+app.config.update(dict(
+    DEBUG=DEBUG,
+    PORT=PORT,
+    HOST=HOST,
+    DATABASE=DATABASE,
+    SECRET_KEY=SECRET_KEY,
+    SERVER_NAME=SERVER_NAME
+))
+
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
@@ -27,7 +37,7 @@ def load_user(userid):
 @app.before_request
 def before_request():
     """Connect to the database before each request."""
-    g.db = models.DATABASE
+    g.db = app.config['DATABASE']
     g.db.connect()
 
 @app.after_request

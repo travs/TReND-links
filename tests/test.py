@@ -8,6 +8,7 @@ class TestTrendlinks(object):
 
     @classmethod
     def setUpClass(self):
+        trendlinks.app.config['TESTING'] = True
         self.app = trendlinks.app.test_client()
 
     @classmethod
@@ -25,7 +26,14 @@ class TestTrendlinks(object):
         """
         URL_LIST = list_URLs(self.app)
         for url in URL_LIST:
-            yield check_status_OK, url
+            yield self.check_status_OK, url
+
+    def test_login(self):
+        """
+        Test that a User can successfully login to the site.
+        """
+        self.app.post('/login', data=dict(
+            username=
 
 if __name__ == '__main__':
     import nose
