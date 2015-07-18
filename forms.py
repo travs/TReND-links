@@ -4,26 +4,11 @@ from wtforms import StringField, PasswordField
 from wtforms.validators import (DataRequired, Regexp, ValidationError,
                               Email, Length, EqualTo)
 
-def name_exists(form, field):
-  if User.select().where(User.username == field.data).exists():
-      raise validationError('User with that username already exists.')
-
 def email_exists(form, field):
-  if User.select().where(User.username == field.data).exists():
-      raise validationError('User with that username already exists.')
+  if User.select().where(User.email == field.data).exists():
+      raise ValidationError('User with that email already exists.')
 
 class RegistrationForm(Form):
-  username = StringField(
-    'Username',
-    validators=[
-      DataRequired(),
-      Regexp(
-        r'^[a-zA-Z0-9_]+$',
-        message=("Username should be one word, letters, numbers,"
-                 " and underscores only.")
-      ),
-      name_exists
-    ])
   email = StringField(
     'Email',
     validators=[

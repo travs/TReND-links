@@ -43,16 +43,30 @@ class TestTrendlinks(object):
 
     def test_good_login(self):
         """
-        Test that a registered User can login to the site.
+        Test that a registered User can log in to the site.
         """
         success_message = "You've been successfully logged in!"
         r = self.login('user@cool.io', 'securepass')
+        response_string = html.unescape(r.get_data().decode('utf8'))
+        assert success_message in response_string
 
     def test_good_register(self):
         """
         Test that you can register to the site.
+        Passes if the User is redirected to the index.
         """
-        pass
+        response = self.register('user@cool.io', 'securepass')
+        assert response.headers.get('location') == '/'
+
+    def test_duplicate_register(self):
+        """
+        Tests that you can't register with the same email twice.
+        """
+        dupe_message = 'User with that email already exists.'
+        self.register('popular@gmail.com', 'mypass')
+        response = self.register('popular@gmail.com', 'someotherpass')
+        response_string = html.unescape(r.get_data().decode('utf8'))
+        assert dupe_message in response_string
 
     def login(self, email, password):
         """
@@ -61,6 +75,16 @@ class TestTrendlinks(object):
         return self.app.post('/login', data=dict(
             email=email,
             password=password
+        ), follow_redirects=True)
+
+    def register(self, email, password):
+        """
+        Do a registration.
+        """
+        return self.app.post('/register', data=dict(
+            email=email,
+            password=password,
+            password2=password
         ), follow_redirects=True)
 
 if __name__ == '__main__':
