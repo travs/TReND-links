@@ -1,4 +1,4 @@
-from flask_wtf import Form
+from flask.ext.wtf import Form
 from models import User
 from wtforms import StringField, PasswordField
 from wtforms.validators import (DataRequired, Regexp, ValidationError,
