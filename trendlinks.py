@@ -1,16 +1,33 @@
 #!/usr/bin/env python
 
-import models, app
+from app import app
+from models import *
+from views import *
+from login import *
+
+DATABASE = app.config['DATABASE']
+HOST = app.config['HOST']
+PORT = app.config['PORT']
+DEBUG = app.config['DEBUG']
+
+def initialize():
+    DATABASE.connect()
+    DATABASE.create_tables([User], safe=True)
+    DATABASE.close()
 
 if __name__ == '__main__':
-  try:
-    models.initialize()
-    models.User.create_user(
-        email='trav221@gmail.com',
-        password='password',
-        admin=True
+    try:
+        initialize()
+        User.create_user(
+            email='trav221@gmail.com',
+            password='password',
+            admin=True
+        )
+    except ValueError:
+        pass
+    app.run(
+        debug=DEBUG,
+        host=HOST, 
+        port=PORT
     )
-  except ValueError:
-    pass
-  app.run(debug=DEBUG, host=HOST, port=PORT)
 

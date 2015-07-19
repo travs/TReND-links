@@ -1,12 +1,11 @@
 import datetime
-from trendlinks import app
+from app import app
 
 from flask.ext.bcrypt import generate_password_hash
 from flask.ext.login import UserMixin
 from peewee import *
 
-DB_NAME = trendlinks.app.config['DATABASE']
-DATABASE = SqliteDatabase(DB_NAME)
+DATABASE = app.config['DATABASE']
 
 class User(UserMixin, Model):
     email = CharField(unique=True)
@@ -49,9 +48,4 @@ class UserProfile(Model):
             )
         except IntegrityError:
             raise ValueError("Profile already exists for this user")
-
-def initialize():
-    DATABASE.connect()
-    DATABASE.create_tables([User], safe=True)
-    DATABASE.close()
 
