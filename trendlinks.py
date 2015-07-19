@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
 from app import app
+from login import *
 from models import *
 from views import *
-from login import *
 
 DATABASE = app.config['DATABASE']
 HOST = app.config['HOST']
