@@ -3,7 +3,8 @@ import models
 from app import app
 from flask import render_template, redirect, flash, url_for
 from flask.ext.bcrypt import check_password_hash
-from flask.ext.login import login_required, login_user, logout_user
+from flask.ext.login import (login_required, login_user, logout_user,
+                            current_user)
 
 @app.route('/register', methods=('GET', 'POST'))
 def register():

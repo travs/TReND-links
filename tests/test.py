@@ -74,6 +74,13 @@ class TestTrendlinks(object):
         log.debug(response.headers)
         assert response.headers.get('location') == redirect_url
 
+    def test_good_logout(self):
+        """
+        Test that a logged-in user can log out of the site.
+        """
+        self.app.get('/logout')
+        pass
+
     def test_duplicate_register(self):
         """
         Tests that you can't register with the same email twice.
