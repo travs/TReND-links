@@ -6,8 +6,8 @@ from models import *
 from views import *
 
 def initialize_database(db_name):
+    app.config['DATABASE'] = DATABASE
     DATABASE.init(db_name)
-    app.config['DATABASE'] = DATABASE 
     DATABASE.connect()
     DATABASE.create_tables([User], safe=True)
     DATABASE.close()

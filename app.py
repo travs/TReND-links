@@ -2,7 +2,6 @@ from flask import Flask, g
 from peewee import SqliteDatabase
 import os
 
-
 app = Flask(__name__)
 
 DEBUG = True
