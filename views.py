@@ -1,7 +1,9 @@
+import forms
+import models
+from app import app
 from flask import render_template, redirect, flash, url_for
 from flask.ext.bcrypt import check_password_hash
-from flask.ext.login import login_required
-from app import app
+from flask.ext.login import login_required, login_user, logout_user
 
 @app.route('/register', methods=('GET', 'POST'))
 def register():

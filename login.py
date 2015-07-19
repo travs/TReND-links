@@ -1,5 +1,5 @@
 from app import app
-from flask.ext.login import LoginManager, login_user, logout_user
+from flask.ext.login import LoginManager
 import models
                             
 login_manager = LoginManager()

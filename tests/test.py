@@ -1,31 +1,34 @@
-import sys, os
+import sys
 sys.path.insert(0, '..')
-import tempfile, trendlinks, models, html
+import app, tempfile, trendlinks, models, html, os
 import logging as log
-
 from helpers import *
+from peewee import SqliteDatabase
 from nose import *
 from nose.tools import nottest
+
 
 class TestTrendlinks(object):
 
     @classmethod
     def setUpClass(self):
-        self.db, trendlinks.app.config['DATABASE'] = tempfile.mkstemp()
+        self.db, self.db_name = tempfile.mkstemp()
         trendlinks.app.config['TESTING'] = True
         trendlinks.app.config['WTF_CSRF_ENABLED'] = False
         self.app = trendlinks.app.test_client()
+        with trendlinks.app.app_context():
+            trendlinks.initialize_database(self.db_name)
 
     @classmethod
     def tearDownClass(self):
         os.close(self.db)
-        os.unlink(trendlinks.app.config['DATABASE'])
+        os.unlink(self.db_name)
 
     def check_status_OK(self, url):
         """ Check that the URL returns a '200 OK' status """
         assert self.app.get(url).status_code == 200
 
-    @nottest
+    @nottest #not working yet...
     def test_URLs_render(self):
         """ 
         Generate tests for a list of URLs.
@@ -59,6 +62,7 @@ class TestTrendlinks(object):
         Passes if the User is redirected to the index.
         """
         response = self.register('user@cool.io', 'securepass')
+        log.debug(response.data)
         assert response.headers.get('location') == '/'
 
     def test_duplicate_register(self):
@@ -68,7 +72,7 @@ class TestTrendlinks(object):
         dupe_message = 'User with that email already exists.'
         self.register('popular@gmail.com', 'mypass')
         response = self.register('popular@gmail.com', 'someotherpass')
-        response_string = html.unescape(r.get_data().decode('utf8'))
+        response_string = html.unescape(response.get_data().decode('utf8'))
         assert dupe_message in response_string
 
     def login(self, email, password):
@@ -88,7 +92,7 @@ class TestTrendlinks(object):
             email=email,
             password=password,
             password2=password
-        ), follow_redirects=True)
+        ), follow_redirects=False)
 
 if __name__ == '__main__':
     import nose

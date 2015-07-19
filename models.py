@@ -1,11 +1,10 @@
+import datetime
 from app import app
 from flask.ext.bcrypt import generate_password_hash
 from flask.ext.login import UserMixin
 from peewee import *
 
-import datetime
-
-DATABASE = app.config['DATABASE']
+DATABASE = SqliteDatabase(None)
 
 class User(UserMixin, Model):
     email = CharField(unique=True)
