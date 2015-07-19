@@ -25,4 +25,3 @@ def list_URLs(app):
                 links.append(url)
         return links
 
-

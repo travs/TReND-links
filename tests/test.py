@@ -2,6 +2,7 @@ import sys
 sys.path.insert(0, '..')
 import app, tempfile, trendlinks, models, html, os
 import logging as log
+from flask import url_for
 from helpers import *
 from peewee import SqliteDatabase
 from nose import *
@@ -62,8 +63,11 @@ class TestTrendlinks(object):
         Passes if the User is redirected to the index.
         """
         response = self.register('user@cool.io', 'securepass')
-        log.debug(response.data)
-        assert response.headers.get('location') == '/'
+        log.debug(response.headers)
+        with trendlinks.app.app_context():
+            redirect_url = url_for('index')
+
+        assert response.headers.get('location') == redirect_url
 
     def test_duplicate_register(self):
         """
