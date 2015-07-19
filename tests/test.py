@@ -48,25 +48,26 @@ class TestTrendlinks(object):
         response_string = html.unescape(r.get_data().decode('utf8'))
         assert fail_message in response_string
 
-    def test_good_login(self):
-        """
-        Test that a registered User can log in to the site.
-        """
-        success_message = "You've been successfully logged in!"
-        r = self.login('user@cool.io', 'securepass')
-        response_string = html.unescape(r.get_data().decode('utf8'))
-        assert success_message in response_string
-
     def test_good_register(self):
         """
         Test that you can register to the site.
         Passes if the User is redirected to the index.
         """
         response = self.register('user@cool.io', 'securepass')
-        log.debug(response.headers)
         with trendlinks.app.app_context():
             redirect_url = url_for('index')
+        assert response.headers.get('location') == redirect_url
 
+    def test_good_login(self):
+        """
+        Test that a registered User can log in to the site.
+        Passes if the User is redirected to the index.
+        """
+        self.register('jake@cool.io', 'securepass')
+        response = self.login('jake@cool.io', 'securepass')
+        with trendlinks.app.app_context():
+            redirect_url = url_for('index')
+        log.debug(response.headers)
         assert response.headers.get('location') == redirect_url
 
     def test_duplicate_register(self):
@@ -86,7 +87,7 @@ class TestTrendlinks(object):
         return self.app.post('/login', data=dict(
             email=email,
             password=password
-        ), follow_redirects=True)
+        ), follow_redirects=False)
 
     def register(self, email, password):
         """
