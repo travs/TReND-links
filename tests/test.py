@@ -27,9 +27,12 @@ class TestTrendlinks(object):
 
     def check_status_OK(self, url):
         """ Check that the URL returns a '200 OK' status """
-        assert self.app.get(url).status_code == 200
+        redirected_status_code = (self.app
+                .get(url, follow_redirects=True)
+                .status_code
+            )
+        assert redirected_status_code == 200
 
-    @nottest #not working yet...
     def test_URLs_render(self):
         """ 
         Generate tests for a list of URLs.
@@ -37,6 +40,7 @@ class TestTrendlinks(object):
         """
         URL_LIST = list_URLs(self.app)
         for url in URL_LIST:
+            log.debug('Rendering {}'.format(url))
             yield self.check_status_OK, url
 
     def test_bad_login(self):
