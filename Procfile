@@ -1,1 +1,1 @@
-web: python trendlinks.py
+web: gunicorn trendlinks:app
