@@ -6,8 +6,8 @@ class Config(object):
     TESTING = False
     CSRF_ENABLED = True
     SECRET_KEY = 'wanna-go-for-an-override?'
-#    HOST = '0.0.0.0'
-#    PORT = 5000
+    HOST = '0.0.0.0'
+    PORT = 5000
     DATABASE = SqliteDatabase(None)
 
 
@@ -27,7 +27,7 @@ class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
 #    HOST = 'localhost'
-#    SERVER_NAME = '{}:{}'.format(HOST, Config.PORT)
+    SERVER_NAME = '{}:{}'.format(Config.HOST, Config.PORT)
 
 
 
