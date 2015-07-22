@@ -4,19 +4,7 @@ import os
 
 app = Flask(__name__)
 
-DEBUG = True
-PORT = 8000
-HOST = 'localhost'
-SECRET_KEY = 'sdhfjkbgddf74u4g8gsnrb73wiur3b2jn3UB!U'
-SERVER_NAME = 'localhost:{}'.format(PORT)
-
-app.config.update(dict(
-    DEBUG=DEBUG,
-    PORT=PORT,
-    HOST=HOST,
-    SECRET_KEY=SECRET_KEY,
-    SERVER_NAME=SERVER_NAME
-))
+app.config.from_object('config.DevelopmentConfig')
 
 @app.before_request
 def before_request():

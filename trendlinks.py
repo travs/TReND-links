@@ -12,6 +12,8 @@ def initialize_database(db_name):
     DATABASE.create_tables([User], safe=True)
     DATABASE.close()
 
+initialize_database('trendlinks.db')
+
 if __name__ == '__main__':
     try:
         app.config['DATABASE'] = DATABASE
