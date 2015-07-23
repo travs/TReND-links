@@ -1,78 +1,58 @@
-<html style="height: 100%;">
-
-<head profile="http://www.w3.org/2005/10/profile">
-    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/travs/TReND-links/gh-pages/assets/favicon.ico">
-
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="TReND Links: Academic Exchange Service" />
-
-    <title>TReND Links</title>
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
-    <script src="//travs.github.io/TReND-links/javascripts/list.js"></script>
-      
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
-    <!-- Latest compiled and minified CSS -->
-    
-      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<!--
-      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-      <link rel="stylesheet" href="../css/custom.css">
-  
--->
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-
-    <!-- Bootstrap treeview script -->
-    <script src="//travs.github.io/TReND-links/javascripts/bootstrap-treeview/dist/bootstrap-treeview.min.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TReND-Links</title>
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://i.icomoon.io/public/temp/e638dd4cb6/UntitledProject/style.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+  <script src="//fast.eager.io/NivdbArKYO.js"></script>
+	<script type="text/javascript" src="js/modernizr.js"></script>
 </head>
-
-<body style="min-height: 100%;">
-  
-    <div class="navbar navbar-inverse navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/"><i class="fa fa-link"></i>&nbsp&nbspTReND Links</a>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/register">Register</a></li>
-                    <li><a href="http://trendinafrica.org/">TReND Home</a></li>
-                </ul>
-                <ul class="nav navbar-nav pull-right">
-                    <li><a href="https://github.com/travs/TReND-links">Contribute&nbsp&nbsp<i class="fa fa-github fa-lg"></i></a></li>
-                </ul>
-            </div>
-            <!--/.nav-collapse -->
-        </div>
-    </div>
-    <div class="jumbotron">
+<body>
+	<div class="main-wrapper">
+		<header class="main-header">
+			<ul class="main-nav">
+				<li class="main-logo"><h1><a href="#">TReND-Links</a></h1></li>
+				<li><a href="#" data-icon="&#xe600;">About</a></li>
+				<li><a href="#" data-icon="&#xe601;">Members</a></li>
+				<li><a href="#" data-icon="&#xe602;">TReND Home</a></li>
+			</ul>
+		</header>
+		<div class="main-banner">
+			<h1>Welcome to TReND-Links!</h1>
+			<p>An academic exchange service for African neuroscientists.</p>
+		</div>
+		<div class="content-row group">
+			<div class="extra-content col">
+				<h3>Extra Content</h3>
+				<p>Filet mignon turkey flank doner strip steak. Frankfurter ham hock turkey, venison sirloin pig chuck shank capicola hamburger doner spare ribs boudin.</p>
+				<hr>
+				<p> Drumstick bresaola meatloaf ham hock salami tri-tip landjaeger beef filet mignon biltong boudin turkey.</p>
+			</div>
+			<div class="primary-content col">
+				<h2>Primary Content</h2>
+				<img class="feat-img" src="http://lorempixel.com/400/300" />
+				<p>Bacon ipsum dolor sit amet chicken pork ground round brisket corned beef ball tip shank tail salami filet mignon ham hock pork belly venison shankle. Pig kielbasa drumstick sausage pork chop boudin. Chicken t-bone salami pork chop, beef ribs kevin ham tri-tip beef venison biltong brisket.</p>
+				<p>Venison strip steak meatball chicken, brisket prosciutto sirloin. Capicola drumstick brisket tri-tip salami. Chicken beef jerky, tail turkey prosciutto cow ham sirloin boudin tenderloin. Meatloaf tri-tip turducken brisket andouille, pork belly corned beef fatback hamburger.</p>
+			</div>
+			<div class="secondary-content col">
+				<h3>Secondary Content</h3>
+				<p>Strip steak tenderloin kevin swine meatloaf capicola, doner beef turducken pancetta corned beef pork loin shoulder.</p>
+				<hr>
+				<p>Pork filet mignon leberkas, tail swine venison pancetta turkey shoulder brisket chalkers likes hamburgers.</p>
+			</div>
+		</div>
     <div>
-        <h1 class="">TReND Links</h1>
-        <p class="lead">Academic Exchange Service</p>
-    <div class="btn-group login-btn" role="group" aria-label="...">
-        <button type="button" class="btn btn-primary btn-lg">Login</button>
-      </div>
-      <div class="btn-group sign-btn" role="group" aria-label="...">
-        <button type="button" class="btn btn-primary btn-lg">Sign Up</button>
-    </div>
+      <footer class="main-footer">
+        <ul id="main-foot">
+          <li>&copy;2014 Example Layout<li>
+          <li class="test"><a class="hvr-icon-fade" href="https://github.com/travs/TReND-links">Contribute</a></li>
+        </ul>
+      </footer>
     </div>
 
-    <div class="footer">
-      
-    </div>
-    </div>
+	</div>
 </body>
-
 </html>
