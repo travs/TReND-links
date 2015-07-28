@@ -25,26 +25,26 @@ class User(UserMixin, Model):
                 is_admin=admin
             )
         except IntegrityError:
-            raise ValueError("User already exists")
+            raise ValueError('User already exists')
 
 class UserProfile(Model):
-    user = ForeignKeyField(User, related_name="profile")
+    user = ForeignKeyField(User, related_name='profile')
     name = CharField(max_length=50)
-    age = DateField()
+    birthdate = DateField()
     country = CharField(max_length=100)
 
     class Meta:
         database = DATABASE
 
     @classmethod
-    def create_user_profile(cls, user, name, age, country):
+    def create_user_profile(cls, user, name, birthdate, country):
         try:
             cls.create(
                 user=user,
                 name=name,
-                age=age,
+                birthdate=birthdate,
                 country=country
             )
         except IntegrityError:
-            raise ValueError("Profile already exists for this user")
+            raise ValueError('Profile already exists for this user')
 
