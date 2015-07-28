@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import subprocess
+import os, subprocess
 from app import *
 from login import *
 from models import *
@@ -16,4 +16,12 @@ def initialize_database(db_name):
 initialize_database('trendlinks.db')
 
 if __name__ == '__main__':
-    subprocess.call(['gunicorn', 'trendlinks:app', '-b', '0.0.0.0:5000'])
+    if not os.name == 'nt':
+        subprocess.call(['gunicorn', 'trendlinks:app', '-b', '0.0.0.0:5000'])
+    else:
+        try:
+            initialize_database('trendlinks.db')
+        except ValueError:
+            pass
+        else:
+            app.run()
