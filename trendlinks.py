@@ -10,7 +10,7 @@ def initialize_database(db_name):
     app.config['DATABASE'] = DATABASE
     DATABASE.init(db_name)
     DATABASE.connect()
-    DATABASE.create_tables([User], safe=True)
+    DATABASE.create_tables([User, UserProfile], safe=True)
     DATABASE.close()
 
 initialize_database('trendlinks.db')
