@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import subprocess
 from app import *
 from login import *
 from models import *
@@ -15,23 +16,4 @@ def initialize_database(db_name):
 initialize_database('trendlinks.db')
 
 if __name__ == '__main__':
-    try:
-        app.config['DATABASE'] = DATABASE
-        initialize_database('trendlinks.db')
-        User.create_user(
-            email='trav221@gmail.com',
-            password='password',
-            admin=True
-        )
-    except ValueError:
-        pass
-
-    HOST = app.config['HOST']
-    PORT = app.config['PORT']
-    DEBUG = app.config['DEBUG']
-    app.run(
-        debug=DEBUG,
-        host=HOST, 
-        port=PORT
-    )
-
+    subprocess.call(['gunicorn', 'trendlinks:app', '-b', '0.0.0.0:5000'])
