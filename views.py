@@ -29,23 +29,6 @@ def register():
         return redirect(url_for('index'))
     return render_template('register.html', form=form)
 
-@app.route('/login', methods=('GET', 'POST'))
-def login():
-    form = forms.LoginForm()
-    if form.validate_on_submit():
-        try:
-            user = models.User.get(models.User.email == form.email.data)
-        except models.DoesNotExist:
-            flash("Your email or password doesn't match.", 'error')
-        else:
-            if check_password_hash(user.password, form.password.data):
-                login_user(user)
-                flash("You've been successfully logged in!", 'success')
-                return redirect(url_for('index'))
-            else:
-                flash("Your email or password doesn't match.", 'error')
-    return render_template('login.html', form=form)
-
 @app.route('/about')
 def about():
     return render_template('about.html')
@@ -59,6 +42,18 @@ def logout():
 
 @app.route('/', methods=('GET', 'POST'))
 def index():
-    form = forms.LoginForm()
-    return render_template('index.html', form=form)
+    login_form = forms.LoginForm()
+    if form.validate_on_submit():
+        try:
+            user = models.User.get(models.User.email == form.email.data)
+        except models.DoesNotExist:
+            flash("Your email or password doesn't match.", 'error')
+        else:
+            if check_password_hash(user.password, form.password.data):
+                login_user(user)
+                flash("You've been successfully logged in!", 'success')
+                return redirect(url_for('index'))
+            else:
+                flash("Your email or password doesn't match.", 'error')
+    return render_template('index.html', form=login_form)
 
