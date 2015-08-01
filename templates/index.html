@@ -1,3 +1,4 @@
+{% from 'macros.html' import render_field %}
 {% extends 'default.html' %}
 {% block content %}
 <div class="main-banner">
@@ -7,14 +8,14 @@
 <div class="content-row group">
     <div class="extra-content col">
         <h3>Login</h3>     
-  <form>
-  <label for="username">Username:</label>
-  <input type="text" id="username" name="username">
-  <label for="password">Password:</label>
-  <input type="password" id="password" name="password">
+  <form action="" method="POST">
+      {{ form.hidden_tag() }}
+      {% for field in form %}
+          {{ render_field(field) }}
+      {% endfor %}
   <div id="lower">
-  <input type="submit" value="Register">
-  <input type="submit" value="Login">
+      <input type="submit" value="Register">
+      <input type="submit" value="Login">
   </div><!--/ lower-->
   </form>
     </div>
