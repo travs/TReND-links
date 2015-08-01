@@ -1,22 +1,35 @@
 {% macro render_field(field) %}
-    <div class="field">
-        {% if field.errors %}
-            {% for error in field.errors %}
-                <div class="notification error">{{ error }}</div>
-            {% endfor %}
-        {% endif %}
-        {{ field(placeholder=field.label.text) }}
-    </div>
+<div class="field">
+    {% if field.errors %}
+    {% for error in field.errors %}
+    <div class="notification error">{{ error }}</div>
+    {% endfor %}
+    {% endif %}
+    {{ field(placeholder=field.label.text) }}
+</div>
 {% endmacro %}
 
 {% macro render_row(row) %}
-    <tr>
-        <td class="name">{{ row.name }}</td>
-        <td class="country">{{ row.country }}</td>
-        <td class="fields">{{ row.fields }}</td>
-        <td class="university">{{ row.university }}</td>
-        <td class="model_system">{{ row.model_system }}</td>
-        <td class="research_technique">{{ row.research_technique }}</td>
-    </tr>
+<tr>
+    <td class="name">{{ row.name }}</td>
+    <td class="country">{{ row.country }}</td>
+    <td class="fields">{{ row.fields }}</td>
+    <td class="university">{{ row.university }}</td>
+    <td class="model_system">{{ row.model_system }}</td>
+    <td class="research_technique">{{ row.research_technique }}</td>
+</tr>
 {% endmacro %}
 
+{% macro get_flashes() %}
+<div>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class=flashes>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+</div>
+{% endmacro %}

@@ -22,13 +22,8 @@ if __name__ == '__main__':
         try:
             app.config['DATABASE'] = DATABASE
             initialize_database('trendlinks.db')
-            User.create_user(
-                email='trav221@gmail.com',
-                password='password',
-                admin=True
-            )
         except ValueError:
-            pass
+            import traceback; traceback.print_exc()
 
         HOST = app.config['HOST']
         PORT = app.config['PORT']

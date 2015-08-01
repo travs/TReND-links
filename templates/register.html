@@ -1,4 +1,6 @@
 {% from 'macros.html' import render_field %}
+{% extends 'default.html' %}
+{% block content %}
 <form action="" method="POST" class="form">
     {{ form.hidden_tag() }}
     {% for field in form %}
@@ -6,3 +8,4 @@
     {% endfor %}
     <button type="submit" id="submit">Register!</button>
 </form>
+{% endblock %}

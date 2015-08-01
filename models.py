@@ -23,7 +23,7 @@ class User(UserMixin, Model):
             cls.create(
                 email=email,
                 password=generate_password_hash(password),
-                is_admin=admin
+                is_admin=admin,
             )
         except IntegrityError:
             raise ValueError('User already exists')

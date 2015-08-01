@@ -1,4 +1,4 @@
-{% from 'macros.html' import render_field %}
+{% from 'macros.html' import render_field, get_flashes %}
 {% extends 'default.html' %}
 {% block content %}
 <div class="main-banner">
@@ -8,16 +8,17 @@
 <div class="content-row group">
     <div class="extra-content col">
         <h3>Login</h3>     
-  <form action="" method="POST">
-      {{ form.hidden_tag() }}
-      {% for field in form %}
-          {{ render_field(field) }}
-      {% endfor %}
-  <div id="lower">
-      <input type="submit" value="Register">
-      <input type="submit" value="Login">
-  </div><!--/ lower-->
-  </form>
+        <form action="" method="POST">
+            {{ form.hidden_tag() }}
+            {% for field in form %}
+            {{ render_field(field) }}
+            {% endfor %}
+            <div id="lower">
+                <input type="submit" value="Register">
+                <input type="submit" value="Login">
+            </div><!--/ lower-->
+        </form>
+        {{ get_flashes() }}
     </div>
     <div class="primary-content col">
         <h2>Primary Content</h2>
