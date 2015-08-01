@@ -43,13 +43,13 @@ def logout():
 @app.route('/', methods=('GET', 'POST'))
 def index():
     login_form = forms.LoginForm()
-    if form.validate_on_submit():
+    if login_form.validate_on_submit():
         try:
-            user = models.User.get(models.User.email == form.email.data)
+            user = models.User.get(models.User.email == login_form.email.data)
         except models.DoesNotExist:
             flash("Your email or password doesn't match.", 'error')
         else:
-            if check_password_hash(user.password, form.password.data):
+            if check_password_hash(user.password, login_form.password.data):
                 login_user(user)
                 flash("You've been successfully logged in!", 'success')
                 return redirect(url_for('index'))
