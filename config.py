@@ -4,7 +4,7 @@ from peewee import SqliteDatabase
 class Config(object):
     DEBUG = False
     TESTING = False
-    CSRF_ENABLED = True
+    WTF_CSRF_ENABLED = False
     SECRET_KEY = 'wanna-go-for-an-override?'
     HOST = '0.0.0.0'
     PORT = 5000
@@ -26,9 +26,8 @@ class DevelopmentConfig(Config):
     SECRET_KEY = 'sdhfjkbgddf74u4g8gsnrb73wiur3b2jn3UB!U'
     DEVELOPMENT = True
     DEBUG = True
-#    HOST = 'localhost'
+    HOST = 'localhost'
     SERVER_NAME = '{}:{}'.format(Config.HOST, Config.PORT)
-
 
 
 class TestingConfig(Config):
