@@ -29,10 +29,6 @@ def register():
         return redirect(url_for('index'))
     return render_template('register.html', form=form)
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
 @app.route('/logout')
 @login_required
 def logout():
