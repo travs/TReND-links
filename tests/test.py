@@ -95,7 +95,7 @@ class TestTrendlinks(object):
         """
         Do a login.
         """
-        return self.app.post('/login', data=dict(
+        return self.app.post('/', data=dict(
             email=email,
             password=password
         ), follow_redirects=False)
