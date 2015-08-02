@@ -1,4 +1,4 @@
-Flask==0.10.1
+-e git+http://github.com/mitsuhiko/flask.git#egg=Flask
 Flask-Bcrypt==0.6.2
 Flask-Login==0.2.11
 Flask-WTF==0.11
