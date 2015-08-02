@@ -1,6 +1,6 @@
 from models import *
 from nose.tools import raises
-import datetime, os, tempfile, trendlinks
+import datetime, os, tempfile, trendlinks, unittest
 
 class TestDatabase(object):
 
@@ -59,3 +59,22 @@ class TestDatabase(object):
             country='United States',
         )
 
+        # if everything passed, pass the test
+        assert True
+
+    def test_retrieve_user(self):
+        """Can we retrieve a created User?"""
+        email = 'a@b.cd'
+        User.create_user(
+            email=email,
+            password='efg',
+        )
+
+        the_user = User.get(User.email == email)
+        assert type(the_user) == User
+
+    @unittest.skip('Have to finish this')
+    def test_retrieve_user_profile(self):
+        """Can we retrive a created UserProfile?"""
+        UserProfile.create_user_profile(
+        )
