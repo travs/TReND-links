@@ -14,7 +14,7 @@ def user_profile(nickname):
     else:
         profile = models.UserProfile.get(models.UserProfile.user == user)
     return render_template(
-        'user_profile.html', 
+        'user-profile.html', 
         profile=profile,
         user=user)
 
@@ -35,6 +35,12 @@ def logout():
     logout_user()
     flash("You've been logged out.", 'success')
     return redirect(url_for('index'))
+
+@app.route('/members')
+def members():
+    user_data = models.User.select().where(models.User.confirmed == True)
+    print(user_data)
+    return render_template('members.html', rows=user_data)
 
 @app.route('/', methods=('GET', 'POST'))
 def index():
