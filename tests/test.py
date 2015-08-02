@@ -43,7 +43,6 @@ class TestTrendlinks(object):
             log.debug('Rendering {}'.format(url))
             yield self.check_status_OK, url
 
-    @unittest.skip('No flashing on index page yet')
     def test_bad_login(self):
         """
         Test that a User receives a fail message with bad password.
