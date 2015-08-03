@@ -31,22 +31,19 @@ class User(UserMixin, Model):
             raise ValueError('User already exists')
 
 class UserProfile(Model):
-    user = ForeignKeyField(User, related_name='profile')
-    name = CharField(max_length=50)
-    birthdate = DateField()
-    country = CharField(max_length=100)
+    user = ForeignKeyField(User, related_name='profile', unique=True)
+    name = CharField(max_length=50, null=True)
+    birthdate = DateField(null=True)
+    country = CharField(max_length=100, null=True)
 
     class Meta:
         database = DATABASE
 
     @classmethod
-    def create_user_profile(cls, user, name, birthdate, country):
+    def create_user_profile(cls, user):
         try:
             cls.create(
                 user=user,
-                name=name,
-                birthdate=birthdate,
-                country=country
             )
         except IntegrityError:
             raise ValueError('Profile already exists for this user')
