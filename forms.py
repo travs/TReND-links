@@ -1,6 +1,6 @@
 from flask.ext.wtf import Form
 from models import User
-from wtforms import StringField, PasswordField
+from wtforms import DateField, StringField, PasswordField
 from wtforms.validators import (DataRequired, Regexp, ValidationError,
         Email, Length, EqualTo)
 
@@ -32,3 +32,7 @@ class LoginForm(Form):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
 
+class ProfileForm(Form):
+    name = StringField('Name')
+    country = StringField('Country')
+    birthdate = DateField('Birthday')
