@@ -34,7 +34,7 @@ class TestTrendlinks(object):
         assert redirected_status_code == 200
 
     def test_URLs_render(self):
-        """ 
+        """
         Generate tests for a list of URLs.
         Pass if the URL does not return an error when sent a GET request.
         """
@@ -47,7 +47,7 @@ class TestTrendlinks(object):
         """
         Test that a User receives a fail message with bad password.
         """
-        fail_message = "Your email or password doesn't match." 
+        fail_message = "Your email or password doesn't match."
         r = self.login('user@cool.io', 'wrongpass')
         response_string = html.unescape(r.get_data().decode('utf8'))
         assert fail_message in response_string
@@ -65,12 +65,12 @@ class TestTrendlinks(object):
     def test_good_login(self):
         """
         Test that a registered User can log in to the site.
-        Passes if the User is redirected to the index.
+        Passes if the User is redirected to the members page.
         """
         self.register('jake@cool.io', 'securepass')
         response = self.login('jake@cool.io', 'securepass')
         with trendlinks.app.app_context():
-            redirect_url = url_for('index')
+            redirect_url = url_for('members')
         log.debug(response.headers)
         assert response.headers.get('location') == redirect_url
 

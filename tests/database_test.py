@@ -54,9 +54,6 @@ class TestDatabase(object):
 
         UserProfile.create_user_profile(
             user=user,
-            name="Lenny Small",
-            birthdate=birthdate,
-            country='United States',
         )
 
         # if everything passed, pass the test
