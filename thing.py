@@ -94,13 +94,8 @@ def index():
     return render_template('index.html', form=login_form)
 
 if __name__ == '__main__':
-    models.initialize()
     try:
-        models.User.create_user(
-            email='kenneth@teamtreehouse.com',
-            password='password',
-            admin=True
-        )
+        models.initialize()
     except ValueError:
        import traceback
        traceback.print_exc()
