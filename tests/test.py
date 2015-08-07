@@ -91,6 +91,16 @@ class TestTrendlinks(object):
         response_string = html.unescape(response.get_data().decode('utf8'))
         assert dupe_message in response_string
 
+    def test_stay_logged_in(self):
+        """
+        Can we log in, and stay logged in after the redirect?
+        """
+        email = 'jake@cool.io'
+        self.login(email, 'securepass')
+        ctx = self.app.test_request_context()
+        ctx.push()
+        ctx.g.user.email == email
+
     def login(self, email, password):
         """
         Do a login.
