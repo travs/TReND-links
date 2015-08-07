@@ -31,6 +31,13 @@ def after_request(response):
     g.db.close()
     return response
 
+@app.route('/profile', methods=('GET', 'POST'))
+@login_required
+def my_profile():
+    user = current_user
+    form = forms.ProfileForm()
+    return render_template('my-profile.html', form=form)
+
 @app.route('/user/<nickname>')
 def user_profile(nickname):
     user = models.User.get(models.User.nickname == nickname)
