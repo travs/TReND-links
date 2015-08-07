@@ -70,7 +70,7 @@ class TestTrendlinks(object):
         self.register('jake@cool.io', 'securepass')
         response = self.login('jake@cool.io', 'securepass')
         with trendlinks.app.app_context():
-            redirect_url = url_for('members')
+            redirect_url = url_for('index')
         log.debug(response.headers)
         assert response.headers.get('location') == redirect_url
 

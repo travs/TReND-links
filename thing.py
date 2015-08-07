@@ -9,7 +9,7 @@ import models
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'login'
+login_manager.login_view = 'index'
 
 @login_manager.user_loader
 def load_user(userid):
@@ -100,4 +100,8 @@ if __name__ == '__main__':
        import traceback
        traceback.print_exc()
 
-    app.run(debug=DEBUG, host=HOST, port=PORT)
+    app.run(
+        debug=app.config['DEBUG'],
+        host=app.config['HOST'],
+        port=app.config['PORT']
+    )
