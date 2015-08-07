@@ -7,4 +7,3 @@ HOST = '0.0.0.0'
 app = Flask(__name__)
 app.secret_key = 'auoesh.bouoastuh.43,uoausoehuosth3ououea.auoub!'
 
-

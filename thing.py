@@ -1,4 +1,4 @@
-from flask import (Flask, g, render_template, flash, redirect, url_for,
+from flask import (g, render_template, flash, redirect, url_for,
                   abort)
 from flask.ext.bcrypt import check_password_hash
 from flask.ext.login import (LoginManager, login_user, logout_user,
@@ -18,14 +18,12 @@ def load_user(userid):
     except models.DoesNotExist:
         return None
 
-
 @app.before_request
 def before_request():
     """Connect to the database before each request."""
     g.db = models.DATABASE
     g.db.connect()
     g.user = current_user
-
 
 @app.after_request
 def after_request(response):
@@ -97,5 +95,7 @@ if __name__ == '__main__':
             admin=True
         )
     except ValueError:
-        pass
+       import traceback
+       traceback.print_exc()
+
     app.run(debug=DEBUG, host=HOST, port=PORT)
