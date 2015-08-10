@@ -1,6 +1,7 @@
-from models import *
+from models import User, UserProfile, initialize
 from nose.tools import raises
-import datetime, os, tempfile, trendlinks, unittest
+import datetime, os, tempfile, unittest
+import app as trendlinks
 
 class TestDatabase(object):
 
@@ -11,7 +12,7 @@ class TestDatabase(object):
         trendlinks.app.config['TESTING'] = True
         self.app = trendlinks.app.test_client()
         with trendlinks.app.app_context():
-            trendlinks.initialize_database(self.db_name)
+            initialize(self.db_name)
 
     @classmethod
     def tearDownClass(self):

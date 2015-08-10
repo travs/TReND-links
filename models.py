@@ -4,9 +4,10 @@ from flask.ext.bcrypt import generate_password_hash
 from flask.ext.login import UserMixin
 from peewee import *
 
-DATABASE = SqliteDatabase('trendlinks.db')
+DATABASE = SqliteDatabase(None)
 
-def initialize():
+def initialize(db_name):
+    DATABASE.init(db_name)
     DATABASE.connect()
     DATABASE.create_tables([User, UserProfile], safe=True)
     DATABASE.close()

@@ -83,13 +83,13 @@ def index():
                 login_user(user)
                 print(current_user)
                 flash("You've been successfully logged in!", 'success')
-                return redirect(url_for('index'))
+                return redirect(url_for('members'))
             else:
                 flash("Your email or password doesn't match.", 'error')
     return render_template('index.html', form=login_form)
 
 if __name__ == '__main__':
-    models.initialize()
+    models.initialize('db_trendlinks.db')
     try:
         models.User.create_user(
             email='kenneth@teamtreehouse.com',
